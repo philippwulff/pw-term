@@ -55,7 +55,7 @@ function enterKey(e) {
     if (e.keyCode == 13) {
       commands.push(command.innerHTML);
       git = commands.length;
-      addLine("guest@pw:~$ " + command.innerHTML, "no-animation", 0);
+      addLine(" > " + command.innerHTML, "no-animation", 0);
       commander(command.innerHTML.toLowerCase());
       command.innerHTML = "";
       textarea.value = "";
@@ -85,27 +85,30 @@ function commander(cmd) {
     case "about":
       loopLines(about, "color2 margin", 80);
       break;
-    case "whoami":
-      loopLines(whoami, "color2 margin", 80);
-      break;
-    case "sudo":
-      addLine("Oh no, you're not admin...", "color2", 80);
-      setTimeout(function() {
-        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-      }, 1000); 
-      break;
-    case "social":
-      loopLines(social, "color2 margin", 80);
-      break;
-    case "secret":
-      liner.classList.add("password");
-      pw = true;
+    case "links":
+      loopLines(links, "color2 margin", 80);
       break;
     case "projects":
       loopLines(projects, "color2 margin", 80);
       break;
-    case "password":
-      addLine("<span class=\"inherit\"> Lol! You're joking, right? You\'re gonna have to try harder than that!😂</span>", "error", 100);
+    case "sudo":
+      addLine("Permission denied: unable to run the command ... as root.", "color2", 80);
+      setTimeout(function() {
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      }, 1000); 
+      break;
+    // case "secret":
+    //   liner.classList.add("password");
+    //   pw = true;
+    //   break;
+    // case "password":
+    //   addLine("<span class=\"inherit\"> Lol! You're joking, right? You\'re gonna have to try harder than that!😂 </span>", "error", 100);
+    //   break;
+    case "vim":
+      addLine("why use vim? Try <span class=\"command\">'emacs'</span> instead", "color2", 80);
+      break;
+    case "emacs":
+      addLine("really? emacs? You should be using <span class=\"command\">'vim'</span>", "color2", 80);
       break;
     case "history":
       addLine("<br>", "", 0);
@@ -113,7 +116,7 @@ function commander(cmd) {
       addLine("<br>", "command", 80 * commands.length + 50);
       break;
     case "email":
-      addLine('Opening mailto:<a href="mailto:forrest@fkcodes.com">forrest@fkcodes.com</a>...', "color2", 80);
+      addLine('Opening mailto:<a href="mailto:philipp.wulff@tum.de">philipp.wulff@tum.de</a>...', "color2", 80);
       newTab(email);
       break;
     case "clear":
@@ -133,6 +136,9 @@ function commander(cmd) {
     case "github":
       addLine("Opening GitHub...", "color2", 0);
       newTab(github);
+      break;
+    case "":
+      addLine("", "color2", 0);
       break;
     default:
       addLine("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
