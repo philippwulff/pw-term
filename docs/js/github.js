@@ -29,7 +29,7 @@ function getReposList(user) {
                 if (repo.stargazers_count > 0) {
                     end_str += `${repo.stargazers_count}⭐️ on `;
                 }
-                end_str +=  `<a href="${repo.html_url}"  target="_blank">GitHub</a>)`;
+                end_str +=  `<a href="${repo.html_url}" target="_blank">GitHub</a>)`;
 
                 var d1 = "";
                 var d2 = "";
@@ -48,7 +48,7 @@ function getReposList(user) {
                 else {
                     d1 = " ".repeat(indent - repo.name.length) + repo.description + end_str;
                 }            
-                reposTxtList.push(`<a href="${repo.html_url}"  target="_blank">${repo.name}</a>` + d1);
+                reposTxtList.push(`<a href="${repo.html_url}" target="_blank">${repo.name}</a>` + d1);
                 if (d2 != null) {
                     reposTxtList.push(d2);
                 }
