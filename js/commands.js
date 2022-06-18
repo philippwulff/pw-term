@@ -1,6 +1,7 @@
+
 // var youtube = "https://www.youtube.com/fknight/";
 // var twitter = "https://www.twitter.com/forrestpknight/";
-//var password = "fkcodes";
+var password = "fkcodes";
 var linkedin = "https://www.linkedin.com/in/philippwulff/";
 var github = "https://github.com/philippwulff";
 var email = 'mailto:philipp.wulff@tum.de';
@@ -8,7 +9,7 @@ var email = 'mailto:philipp.wulff@tum.de';
 about = [
   "<br>",
   "Hi there, 👋🏽",
-  "I am Philipp, a student and software developer, who enjoys building robots, AI,", 
+  "I am Philipp, a student and software engineer, who enjoys building robots, AI,", 
   "websites like this one and other cool projects that are useful to me or others.",
   "After graduating with a Bachelor's in Mechanical Engineering at RWTH Aachen I", 
   "began my Master's in Robotics, Cognition, Intelligence at the Technical University", 
@@ -26,8 +27,11 @@ links = [
 
 projects = [
   "<br>",
-  "Work in progress... most projects are on GitHub or confidential.",
-  "<br>"
+  "Work in progress... most projects are still offline, on GitHub or confidential.",
+  "Here is a list of some GitHub repositories that I worked on:",
+  "<br>",
+  `<div id="repo-box"></div>`,
+  ...repos,
 ];
 
 help = [
