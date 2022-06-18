@@ -130,6 +130,18 @@ function commander(cmd) {
     case "echo":
       addLine(`${args}`, "color2", 80);
       break;
+    case "ping":
+      // function isNumeric(value) {
+      //   return /^\d+$/.test(value);
+      // }
+      if (/^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/.test(args)) {
+          addLine(`<span class=\"inherit\">PING ${args} (${args}): 56 data bytes</span>`);
+          addLine(`<span class=\"inherit\">64 bytes from ${args}: icmp_seq=0 ttl=116 time=25.862 ms</span>`);
+      }
+      else {
+          addLine(`<span class=\"inherit\">ping: cannot resolve ${args}: Unknown host</span>`);
+      }
+      break;
     // fun commands
     // case "secret":
     //   liner.classList.add("password");
