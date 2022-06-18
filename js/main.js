@@ -78,6 +78,12 @@ function enterKey(e) {
 }
 
 function commander(cmd) {
+  var cmdAll = cmd.split(" "); 
+  var cmd = cmdAll[0];
+  var args = "";
+  if (cmdAll.length > 1) {
+    args = cmdAll.slice(1).join(" ");
+  }
   switch (cmd.toLowerCase()) {
     case "help":
       loopLines(help, "color2 margin", 80);
@@ -91,42 +97,9 @@ function commander(cmd) {
     case "projects":
       loopLines(projects, "color2 margin", 80);
       break;
-    case "sudo":
-      addLine("Permission denied: unable to run the command ... as root.", "color2", 80);
-      setTimeout(function() {
-        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-      }, 1000); 
-      break;
-    // case "secret":
-    //   liner.classList.add("password");
-    //   pw = true;
-    //   break;
-    // case "password":
-    //   addLine("<span class=\"inherit\"> Lol! You're joking, right? You\'re gonna have to try harder than that!😂 </span>", "error", 100);
-    //   break;
-    case "vim":
-      addLine("why use vim? Try <span class=\"command\">'emacs'</span> instead", "color2", 80);
-      break;
-    case "emacs":
-      addLine("really? emacs? You should be using <span class=\"command\">'vim'</span>", "color2", 80);
-      break;
-    case "history":
-      addLine("<br>", "", 0);
-      loopLines(commands, "color2", 80);
-      addLine("<br>", "command", 80 * commands.length + 50);
-      break;
     case "email":
       addLine('Opening mailto:<a href="mailto:philipp.wulff@tum.de">philipp.wulff@tum.de</a>...', "color2", 80);
       newTab(email);
-      break;
-    case "clear":
-      setTimeout(function() {
-        terminal.innerHTML = '<a id="before"></a>';
-        before = document.getElementById("before");
-      }, 1);
-      break;
-    case "banner":
-      loopLines(banner, "", 80);
       break;
     // socials
     case "linkedin":
@@ -137,11 +110,63 @@ function commander(cmd) {
       addLine("Opening GitHub...", "color2", 0);
       newTab(github);
       break;
+    // functional commands
+    case "history":
+      addLine("<br>", "", 0);
+      loopLines(commands, "color2", 80);
+      addLine("<br>", "command", 80 * commands.length + 50);
+      break;
+    case "clear":
+      setTimeout(function() {
+        terminal.innerHTML = '<a id="before"></a>';
+        before = document.getElementById("before");
+      }, 1);
+      break;
+    case "banner":
+      loopLines(banner, "", 80);
+      break;
+    case "theme":
+      break;
+    case "echo":
+      addLine(`${args}`, "color2", 80);
+      break;
+    // fun commands
+    // case "secret":
+    //   liner.classList.add("password");
+    //   pw = true;
+    //   break;
+    // case "password":
+    //   addLine("<span class=\"inherit\"> Lol! You're joking, right? You\'re gonna have to try harder than that!😂 </span>", "error", 100);
+    //   break;
+    case "ls":
+      addLine("<span class=\"inherit\">some</span>", "color2", 80);
+      addLine("<span class=\"inherit\">fake</span>", "color2", 80);
+      addLine("<span class=\"inherit\">files</span>", "color2", 80);
+      break;
+    case "cd":
+      // check for file like path given in args
+      addLine("<span class=\"inherit\"></span>", "color2", 80);
+      break;
+    case "vi":
+      addLine("<span class=\"inherit\">why use vi? Try <span class=\"command\">'vim'</span> instead</span>", "color2", 80);
+      break;
+    case "vim":
+      addLine("<span class=\"inherit\">why use vim? Try <span class=\"command\">'emacs'</span> instead</span>", "color2", 80);
+      break;
+    case "emacs":
+      addLine("<span class=\"inherit\">really? emacs? You should be using <span class=\"command\">'vim'</span></span>", "color2", 80);
+      break;
+    case "sudo":
+      addLine(`<span class=\"inherit\">Permission denied: unable to run '${args}' as root.</span>`, "color2", 80);
+      setTimeout(function() {
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      }, 1); 
+      break;
     case "":
       addLine("", "color2", 0);
       break;
     default:
-      addLine("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+      addLine(`<span class=\"inherit\">Command not found: ${cmd}. Type <span class=\"command\">'help'</span> to see available commands.</span>`, "error", 100);
       break;
   }
 }

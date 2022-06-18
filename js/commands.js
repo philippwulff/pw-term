@@ -7,7 +7,13 @@ var email = 'mailto:philipp.wulff@tum.de';
 
 about = [
   "<br>",
-  "I am Philipp, a computer science student at the Technical University of Munich.",
+  "Hi there, 👋🏽",
+  "I am Philipp, a student and software developer, who enjoys building robots, AI,", 
+  "websites like this one and other cool projects that are useful to me or others.",
+  "After graduating with a Bachelor's in Mechanical Engineering at RWTH Aachen I", 
+  "began my Master's in Robotics, Cognition, Intelligence at the Technical University", 
+  "of Munich. I am particularly interested in Deep Learning and have gained", 
+  "professional working experience in this field in a Fortune 500 company.",
   "<br>"
 ];
 
@@ -27,7 +33,7 @@ projects = [
 help = [
   "<br>",
   '<span class="command">about</span>          Who is Philipp?',
-  '<span class="command">links</span>         Display my links',
+  '<span class="command">links</span>          Display my links',
   // '<span class="command">secret</span>         Find the password',
   '<span class="command">projects</span>       View coding projects',
   '<span class="command">history</span>        View command history',
