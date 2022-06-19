@@ -3,7 +3,7 @@
 I coded this website as a fun way to present my portfolio. Some cool features that I implemented are:
 - personal GitHub repos are found automatically and displayed when you type `projects`;
 - the terminal has tab-completion and displays auto-complete-suggestions similar to the beatiful shell [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh);
-- you can switch between terminal themes with a single command: `theme set ...`
+- you can switch between terminal styles with a single command: `theme set ...`
 
 ## Disclaimer
 
