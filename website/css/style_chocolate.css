@@ -9,8 +9,8 @@ body {
   min-height: 99%;
   width: 100%;
   min-width: 550px;
-  color: #F4D58D;
-  background: #001427;
+  color: #C06E52;
+  background: #43281C;
   font-family: cursor, monospace;
   overflow-x: hidden;
   font-size: large;
@@ -34,8 +34,8 @@ b {
 /* Cursor Start */
 .cursor {
   font-size: 12px;
-  color: #F34213;
-  background-color: #F34213;
+  color: #688E26;
+  background-color: #688E26;
   position: relative;
   opacity: 1;
   height: 1.5em;
@@ -57,7 +57,7 @@ b {
 #command {
   cursor: text;
   height: 50px;
-  color: #F34213;
+  color: #688E26;
   font-size: large;
   margin-top: 15px;
 }
@@ -69,7 +69,7 @@ b {
   opacity: 0;
 }
 #liner::before {
-  color: #2191FB;
+  color: #A09BE7;
   content: "guest@pw-term:$ ~";
 }
 #liner.password::before {
@@ -113,12 +113,12 @@ p {
 }
 /* For main texts */
 .color2 {
-  color: #708D81;
+  color: #70ABAF;
 }
 /* Commands within text with glow */
 .command {
-  color: #F34213;
-  text-shadow: 0 0 5px #F34213; 
+  color: #688E26;
+  text-shadow: 0 0 5px #688E26; 
 }
 .error {
   color: #FC440F;
@@ -129,14 +129,14 @@ p {
 /* terminal output and links */
 .inherit, 
 a {
-  color: #FE938C;
+  color: #FBF2C0;
 }
 a {
   text-decoration: inherit;
 }
 a:hover {
-  background: #FE938C;
-  color: #001427;
+  background: #ffd16658;
+  color: #D1D2F9;
 }
 a:focus {
   outline: 0;

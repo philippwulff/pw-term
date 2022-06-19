@@ -77,4 +77,5 @@ gui = [
 themes = {
   "coral": "css/style_coral.css",
   "midnight": "css/style_midnight.css",
+  "chocolate": "css/style_chocolate.css",
 };

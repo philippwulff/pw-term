@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <!-- To disable tabbing into the address bar
-    https://stackoverflow.com/questions/15355948/preventing-tab-to-cycle-through-address-bar -->
-  <span tabindex="0" id="prevent-outside-tab"></span>
 
   <head>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ9TR5T9S2"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -23,7 +19,13 @@
     <title>PW | Terminal</title>
     <link rel="stylesheet" type="text/css" media="screen" href="css/style_coral.css" />
     <link rel="icon" type="image/x-icon" href="imgs/icon.png" />
+
   </head>
+
+  <!-- To disable tabbing into the address bar
+  https://stackoverflow.com/questions/15355948/preventing-tab-to-cycle-through-address-bar -->
+  <span tabindex="0" id="prevent-outside-tab"></span>
+
   <body>
     <div id="terminal">
       <a id="before"></a>
@@ -47,8 +49,12 @@
     <script src="js/caret.js"></script>
     <script src="js/commands.js"></script>
     <script src="js/main.js"></script>
+
+
   </body>
 
-  <span tabindex="0" onfocus="focusTextArea()"></span>
+  <!-- To disable tabbing into the address bar -->
+  <span tabindex="0" onfocus="focusTextArea()"></span>  
+
 </html>
 

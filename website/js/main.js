@@ -176,7 +176,7 @@ function commander(cmd) {
           break;
         case "random":
           var theme = Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
-          addLine(`<span class=\"inherit\">Setting theme: '${themes[theme]}'</span>`);
+          addLine(`<span class=\"inherit\">Setting theme: '${theme}'</span>`);
           setThemeCSS(theme);
           break;
       }
