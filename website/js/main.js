@@ -3,79 +3,102 @@ var liner = document.getElementById("liner");
 var command = document.getElementById("typer"); 
 var textarea = document.getElementById("texter"); 
 var terminal = document.getElementById("terminal");
+var after = document.getElementById("after");
 
 var git = 0;
+var tab = 0;
 var pw = false;
 let pwd = false;
-var commands = [];
+var commandsLog = [];
+var selectedTabCmd = "";
 
 setTimeout(function() {
   loopLines(banner, "", 80);
   textarea.focus();
 }, 100);
 
+window.addEventListener('click', focusTextArea, true); 
 window.addEventListener("keyup", enterKey);
-
-console.log(
-  "%cYou hacked my password!😠",
-  "color: #04ff00; font-weight: bold; font-size: 24px;"
-);
-console.log("%cPassword: '" + password + "' - I wonder what it does?🤔", "color: grey");
 
 //init
 textarea.value = "";
 command.innerHTML = textarea.value;
 
+function focusTextArea() {
+  textarea.focus();
+}
+
 function enterKey(e) {
   if (e.keyCode == 181) {
     document.location.reload(true);
   }
-  if (pw) {
-    let et = "*";
-    let w = textarea.value.length;
-    command.innerHTML = et.repeat(w);
-    if (textarea.value === password) {
-      pwd = true;
+  // Enter key
+  if (e.keyCode == 13) {    
+    removeTabCompleteLine();    
+    tab = 0;                                  // update the tab index
+    if ( selectedTabCmd != "" ) {
+      textarea.value = selectedTabCmd;
+      command.innerHTML = selectedTabCmd;
+      selectedTabCmd = "";
+      return;
     }
-    if (pwd && e.keyCode == 13) {
-      loopLines(secret, "color2 margin", 120);
-      command.innerHTML = "";
+    commandsLog.push(command.innerHTML);
+    git = commandsLog.length;                 // update the arrow key index
+    addLine(" > " + command.innerHTML, "no-animation", 0);
+    commander(command.innerHTML.toLowerCase());
+    command.innerHTML = "";
+    textarea.value = "";
+  }
+  // Arrow up
+  if (e.keyCode == 38 && git != 0) {
+    git -= 1;
+    textarea.value = commandsLog[git];
+    command.innerHTML = textarea.value;
+  }
+  // Arrow down
+  if (e.keyCode == 40 && git != commandsLog.length) {
+    git += 1;
+    if (commandsLog[git] === undefined) {
       textarea.value = "";
-      pwd = false;
-      pw = false;
-      liner.classList.remove("password");
-    } else if (e.keyCode == 13) {
-      addLine("Wrong password", "error", 0);
-      command.innerHTML = "";
-      textarea.value = "";
-      pw = false;
-      liner.classList.remove("password");
+    } else {
+      textarea.value = commandsLog[git];
     }
-  } else {
-    if (e.keyCode == 13) {
-      commands.push(command.innerHTML);
-      git = commands.length;
-      addLine(" > " + command.innerHTML, "no-animation", 0);
-      commander(command.innerHTML.toLowerCase());
-      command.innerHTML = "";
-      textarea.value = "";
+    command.innerHTML = textarea.value;
+  }
+  // Tab complete
+  if (e.keyCode == 9) {
+    if (textarea.value.length == 0) {
+      refreshTabCompleteLine("");
     }
-    if (e.keyCode == 38 && git != 0) {
-      git -= 1;
-      textarea.value = commands[git];
-      command.innerHTML = textarea.value;
-    }
-    if (e.keyCode == 40 && git != commands.length) {
-      git += 1;
-      if (commands[git] === undefined) {
-        textarea.value = "";
-      } else {
-        textarea.value = commands[git];
+    else {
+      cmdOptions = completeQuery(allCommands, textarea.value);
+      if ( tab == cmdOptions.length ) {
+        tab = 0;
       }
-      command.innerHTML = textarea.value;
+      if (cmdOptions.length == 1) {
+        textarea.value = cmdOptions[0];
+        command.innerHTML = textarea.value;
+      }
+      else if (cmdOptions.length > 1) {
+        selectedTabCmd = cmdOptions[tab];
+        console.log(tab);
+        console.log(selectedTabCmd);
+
+        suggestionTxt = "";
+        for (let i = 0; i < cmdOptions.length; i++) {
+          if ( i == tab ) {
+            suggestionTxt += `<span class=\"command\">${cmdOptions[i]}</span>    `;
+            continue;
+          }
+          suggestionTxt += `<span class=\"inherit\">${cmdOptions[i]}</span>    `;
+        }
+        refreshTabCompleteLine(suggestionTxt);
+      }
+      tab += 1;
     }
   }
 }
+
 
 function commander(cmd) {
   var cmdAll = cmd.split(" "); 
@@ -113,8 +136,8 @@ function commander(cmd) {
     // functional commands
     case "history":
       addLine("<br>", "", 0);
-      loopLines(commands, "color2", 80);
-      addLine("<br>", "command", 80 * commands.length + 50);
+      loopLines(commandsLog, "color2", 80);
+      addLine("<br>", "command", 80 * commandsLog.length + 50);
       break;
     case "clear":
       setTimeout(function() {
@@ -126,14 +149,42 @@ function commander(cmd) {
       loopLines(banner, "", 80);
       break;
     case "theme":
+      var allArgs = args.split(" ");
+      var themeCmd = allArgs[0];
+      var themeArg = "";
+      if (allArgs.length == 2) {
+        themeArg = allArgs[1];
+      }
+      switch (themeCmd.toLowerCase()) {
+        case "":
+          addLine(`<span class=\"inherit\">Usage: theme [arg]</span>`);
+          addLine(`<span class=\"inherit\">Args:</span>`);
+          addLine(`<span class=\"inherit\">   - ls: list all themes</span>`);
+          addLine(`<span class=\"inherit\">   - set: set a theme</span>`);
+          addLine(`<span class=\"inherit\">   - random: set a random theme</span>`);
+          break;
+        case "ls":
+          loopLines(Object.keys(themes), "inherit", 80);
+          break;
+        case "set":
+          if ( !Object.keys(themes).includes(themeArg) ) {
+            addLine(`<span class=\"inherit\">Theme '${themeArg}' does not exist</span>`);
+            break;
+          }
+          addLine(`<span class=\"inherit\">Setting theme: '${themeArg}'</span>`);
+          setThemeCSS(themeArg);
+          break;
+        case "random":
+          var theme = Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
+          addLine(`<span class=\"inherit\">Setting theme: '${themes[theme]}'</span>`);
+          setThemeCSS(theme);
+          break;
+      }
       break;
     case "echo":
       addLine(`${args}`, "color2", 80);
       break;
     case "ping":
-      // function isNumeric(value) {
-      //   return /^\d+$/.test(value);
-      // }
       if (/^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/.test(args)) {
           addLine(`<span class=\"inherit\">PING ${args} (${args}): 56 data bytes</span>`);
           addLine(`<span class=\"inherit\">64 bytes from ${args}: icmp_seq=0 ttl=116 time=25.862 ms</span>`);
@@ -143,13 +194,6 @@ function commander(cmd) {
       }
       break;
     // fun commands
-    // case "secret":
-    //   liner.classList.add("password");
-    //   pw = true;
-    //   break;
-    // case "password":
-    //   addLine("<span class=\"inherit\"> Lol! You're joking, right? You\'re gonna have to try harder than that!😂 </span>", "error", 100);
-    //   break;
     case "ls":
       addLine("<span class=\"inherit\">some</span>", "color2", 80);
       addLine("<span class=\"inherit\">fake</span>", "color2", 80);
@@ -216,3 +260,41 @@ function loopLines(name, style, time) {
   });
 }
 
+function setThemeCSS(theme) {
+  // Selects other CSS theme
+  var lnk = document.createElement('link');
+  lnk.href = themes[theme];
+  lnk.rel = 'stylesheet';
+  lnk.type = 'text/css';
+  (document.head||document.documentElement).appendChild(lnk);
+}
+
+function completeQuery(arr, query) {
+  // Completes the query string with a list of matching elements from arr
+  return arr.filter(function(item) {
+    return item.startsWith(query);
+  });
+}
+
+function refreshTabCompleteLine(text, style, time) {
+  // Refreshes the line below the command for tab completion suggestions
+  removeTabCompleteLine();
+  setTimeout(function() {
+    var next = document.createElement("p");
+    next.setAttribute("id", "tabCompleteLine");
+    next.innerHTML = text;
+    next.className = style;
+
+    after.parentNode.insertBefore(next, after);
+
+    window.scrollTo(0, document.body.offsetHeight);
+  }, time);
+}
+
+function removeTabCompleteLine() {
+  // Deletes the HTML element
+  var tcl = document.getElementById("tabCompleteLine");
+  if ( tcl !== null ) {
+    tcl.outerHTML = "";
+  }
+}

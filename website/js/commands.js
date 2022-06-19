@@ -1,7 +1,4 @@
 
-// var youtube = "https://www.youtube.com/fknight/";
-// var twitter = "https://www.twitter.com/forrestpknight/";
-var password = "fkcodes";
 var linkedin = "https://www.linkedin.com/in/philippwulff/";
 var github = "https://github.com/philippwulff";
 var email = 'mailto:philipp.wulff@tum.de';
@@ -38,13 +35,13 @@ help = [
   "<br>",
   '<span class="command">about</span>          Who is Philipp?',
   '<span class="command">links</span>          Display my links',
-  // '<span class="command">secret</span>         Find the password',
   '<span class="command">projects</span>       View coding projects',
   '<span class="command">history</span>        View command history',
   '<span class="command">help</span>           You obviously already know what this does',
   '<span class="command">email</span>          Do not email me',
   '<span class="command">clear</span>          Clear terminal',
   '<span class="command">banner</span>         Display the header',
+  '<span class="command">[tab]</span>          Trigger completion',
   "<br>",
   'Also try other commands that you know. I may have included some easter eggs 😆.',
   "<br>",
@@ -64,6 +61,20 @@ banner = [
   "<br>",
 ];
 
+allCommands = [
+  "help", "about", "links", "projects", "email", "linkedin", "github", "history", "clear", "banner", "theme",
+  "echo", "ping", "ls", "cd", "vi", "vim", "emacs", "sudo",
+];
+
+allArgs = [
+  "ls", "set", "random", "coral", "midnight", 
+];
+
 gui = [
   // TODO
 ];
+
+themes = {
+  "coral": "css/style_coral.css",
+  "midnight": "css/style_midnight.css",
+};

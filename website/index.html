@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
+    <!-- To disable tabbing into the address bar
+    https://stackoverflow.com/questions/15355948/preventing-tab-to-cycle-through-address-bar -->
+  <span tabindex="0" id="prevent-outside-tab"></span>
+
   <head>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ9TR5T9S2"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- <script src="https://unpkg.com/github-api/dist/GitHub.min.js"></script> -->
-    <!-- <script src="https://gitlist.himdek.com/GitHubList.js"></script> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1jquery.min.js"></script> -->
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -20,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PW | Terminal</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style_coral.css" />
     <link rel="icon" type="image/x-icon" href="imgs/icon.png" />
   </head>
   <body>
@@ -41,14 +42,13 @@
         <span id="typer"></span><b class="cursor" id="cursor">█</b>
       </div>
     </div>
-    <script type="module">
-      import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
-    </script>
+    <a id="after"></a>
     <script src="js/github.js"></script>
     <script src="js/caret.js"></script>
     <script src="js/commands.js"></script>
     <script src="js/main.js"></script>
-
   </body>
+
+  <span tabindex="0" onfocus="focusTextArea()"></span>
 </html>
 

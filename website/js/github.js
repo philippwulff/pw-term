@@ -25,11 +25,10 @@ function getReposList(user) {
                 if (repo.description == null) {
                     return;        // this is equivalent of 'continue' for jQuery loop
                 }
-                var end_str = "  (";
+                var end_str = " ";
                 if (repo.stargazers_count > 0) {
-                    end_str += `${repo.stargazers_count}⭐️ on `;
+                    end_str += `(${repo.stargazers_count}⭐️ on <a href="${repo.html_url}" target="_blank">GitHub</a>)`;
                 }
-                end_str +=  `<a href="${repo.html_url}" target="_blank">GitHub</a>)`;
 
                 var d1 = "";
                 var d2 = "";

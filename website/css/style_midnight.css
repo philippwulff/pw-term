@@ -1,0 +1,143 @@
+/* CORAL THEME */
+
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 10px 15px;     /* top left */
+  min-height: 99%;
+  width: 100%;
+  min-width: 550px;
+  color: #1e079f;
+  background: #26547C;
+  font-family: cursor, monospace;
+  overflow-x: hidden;
+  font-size: large;
+}
+::selection {
+  color: #dcd1ee;
+  background-color: #F991CC;
+}
+::-moz-selection {
+  color: #de743a;
+  background-color: #519975;
+}
+textarea {
+  left: -1000px;
+  position: absolute;
+}
+b {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* Cursor Start */
+.cursor {
+  font-size: 12px;
+  color: #FFD166;
+  background-color: #FFD166;
+  position: relative;
+  opacity: 1;
+  height: 1.5em;
+  width: 10px;
+  max-width: 10px;
+  transform: translateY(4px);
+  overflow: hidden;
+  text-indent: -5px;
+  display: inline-block;
+  text-decoration: blink;
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+/* typed text before enter */
+#command {
+  cursor: text;
+  height: 50px;
+  color: #FFD166;
+  font-size: large;
+  margin-top: 15px;
+}
+#liner {
+  line-height: 1.3em;
+  margin-top: -2px;
+  animation: show 0.5s ease forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+#liner::before {
+  color: #40C9A2;
+  content: "guest@pw-term:$ ~";
+}
+#liner.password::before {
+  content: "Password:";
+}
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Cursor End */
+p {
+  display: block;
+  line-height: 1.3em;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 0.05em;
+  animation: typing 0.5s steps(30, end);
+}
+.no-animation {
+  animation: typing 0 steps(30, end);
+}
+.margin {
+  margin-left: 20px;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.index {
+  color: #d600f7;
+}
+/* For main texts */
+.color2 {
+  color: #9BB1FF;
+}
+/* Commands within text with glow */
+.command {
+  color: #FFD166;
+  text-shadow: 0 0 5px #FFD166; 
+}
+.error {
+  color: #FC440F;
+}
+.white {
+  color: #FFFCF9;
+}
+/* terminal output and links */
+.inherit, 
+a {
+  color: #D8D4F2;
+}
+a {
+  text-decoration: inherit;
+}
+a:hover {
+  background: #ffd16658;
+  color: #D1D2F9;
+}
+a:focus {
+  outline: 0;
+}
