@@ -81,8 +81,6 @@ function enterKey(e) {
       }
       else if (cmdOptions.length > 1) {
         selectedTabCmd = cmdOptions[tab];
-        console.log(tab);
-        console.log(selectedTabCmd);
 
         suggestionTxt = "";
         for (let i = 0; i < cmdOptions.length; i++) {
