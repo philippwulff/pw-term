@@ -41,6 +41,7 @@ help = [
   '<span class="command">email</span>          Do not email me',
   '<span class="command">clear</span>          Clear terminal',
   '<span class="command">banner</span>         Display the header',
+  '<span class="command">theme</span>          Change the theme',
   '<span class="command">[tab]</span>          Trigger completion',
   "<br>",
   'Also try other commands that you know. I may have included some easter eggs 😆.',
