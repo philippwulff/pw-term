@@ -12,8 +12,10 @@ let pwd = false;
 var commandsLog = [];
 var selectedTabCmd = "";
 
-setTimeout(function() {
-  loopLines(banner, "", 80);
+setTimeout(async function() {
+  await new Promise((resolve)=>{resolve(loopLines(banner, "terminal-banner", 80));});
+  // await loopLines(banner, "terminal-banner", 80);
+  loopLines(welcomeMsg, "", 80);
   textarea.focus();
 }, 100);
 
@@ -106,17 +108,18 @@ function commander(cmd) {
     args = cmdAll.slice(1).join(" ");
   }
   switch (cmd.toLowerCase()) {
+    // content stuff
     case "help":
-      loopLines(help, "color2 margin", 80);
+      loopLines(help, "color2 margin no-animation", 80);
       break;
     case "about":
-      loopLines(about, "color2 margin", 80);
+      loopLines(about, "color2 margin no-animation", 80);
       break;
     case "links":
-      loopLines(links, "color2 margin", 80);
+      loopLines(links, "color2 margin no-animation", 80);
       break;
     case "projects":
-      loopLines(projects, "color2 margin", 80);
+      loopLines(projects, "color2 margin no-animation", 80);
       break;
     case "email":
       addLine('Opening mailto:<a href="mailto:philipp.wulff@tum.de">philipp.wulff@tum.de</a>...', "color2", 80);
@@ -132,6 +135,9 @@ function commander(cmd) {
       newTab(github);
       break;
     // functional commands
+    case "gui":
+      addLine("Work in progress...", "inherit", 0);
+      break;
     case "history":
       addLine("<br>", "", 0);
       loopLines(commandsLog, "color2", 80);
@@ -144,7 +150,7 @@ function commander(cmd) {
       }, 1);
       break;
     case "banner":
-      loopLines(banner, "", 80);
+      loopLines(banner, "terminal-banner", 80);
       break;
     case "theme":
       var allArgs = args.split(" ");
@@ -220,7 +226,7 @@ function commander(cmd) {
       addLine("", "color2", 0);
       break;
     default:
-      addLine(`<span class=\"inherit\">Command not found: ${cmd}. Type <span class=\"command\">'help'</span> to see available commands.</span>`, "error", 100);
+      addLine(`Command not found: ${cmd}. Type <span class=\"command\">'help'</span> to see available commands.`, "inherit", 100);
       break;
   }
 }
@@ -252,9 +258,9 @@ function addLine(text, style, time) {
   }, time);
 }
 
-function loopLines(name, style, time) {
+async function loopLines(name, style, time) {
   name.forEach(function(item, index) {
-    addLine(item, style, index * time);
+      addLine(item, style, index * time);
   });
 }
 
@@ -295,4 +301,8 @@ function removeTabCompleteLine() {
   if ( tcl !== null ) {
     tcl.outerHTML = "";
   }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
