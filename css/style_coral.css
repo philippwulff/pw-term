@@ -7,14 +7,12 @@ body {
   margin: 0;
   padding: 10px 15px;     /* top left */
   min-height: 99%;
-  width: 100%;
-  /* min-width: 550px; */
+  width: 95vw;
   color: #F25F5C;
   background: #26547C;
   font-family: cursor, monospace;
   overflow-x: hidden;
-  font-size: calc(1vw + 7px);
-  /* font-size: large; */
+  font-size: calc(1.5vw + 7px);
 }
 ::selection {
   color: #dcd1ee;
@@ -34,14 +32,15 @@ b {
 }
 /* Cursor Start */
 .cursor {
-  font-size: 12px;
+  font-size: 1.2vw; /*12px;*/
   color: #FFD166;
   background-color: #FFD166;
   position: relative;
   opacity: 1;
-  height: 1.5em;
-  width: 10px;
+  height: 2vw;
+  width: 1vw;
   max-width: 10px;
+  min-height: 10px;
   transform: translateY(4px);
   overflow: hidden;
   text-indent: -5px;
@@ -59,7 +58,7 @@ b {
   cursor: text;
   height: 50px;
   color: #FFD166;
-  font-size: calc(1vw + 7px);
+  font-size: calc(1.5vw + 7px);
   /* font-size: large; */
   margin-top: 15px;
 }
@@ -72,7 +71,7 @@ b {
 }
 #liner::before {
   color: #40C9A2;
-  font-size: calc(1vw + 7px);
+  font-size: calc(1.5vw + 7px);
   content: "guest@pw-term:$ ~";
 }
 #liner.password::before {
@@ -109,7 +108,7 @@ p {
   letter-spacing: 0.05em;
   animation: typing 0.5s steps(30, end);
   /* font-size: calc(2vw + 7px); */
-  font-size: calc(1vw + 7px);
+  font-size: calc(1.5vw + 7px);
 }
 .terminal-banner {
   white-space: nowrap;
@@ -117,16 +116,16 @@ p {
   font-weight: bolder;
   /* Adds glow */
   color: #F25F5C;
-  text-shadow: 0 0 10px #F25F5C; 
+  /* text-shadow: 0 0 10px #F25F5C;  */
 }
 .terminal-welcome-msg {
-  /* font-size: calc(2vw + 7px); */
+  font-size: calc(1.5vw + 7px);
 }
 .no-animation {
   animation: typing 0 steps(30, end);
 }
 .margin {
-  margin-left: 2%;
+  margin-left: 3%;
   margin-right: 3%;
 }
 @keyframes typing {

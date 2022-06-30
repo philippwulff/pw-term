@@ -69,10 +69,10 @@ function enterKey(e) {
   }
   // Tab complete
   if (e.keyCode == 9) {
-    if (textarea.value.length == 0) {
-      refreshTabCompleteLine("");
-    }
-    else {
+    // if (textarea.value.length == 0) {
+    //   refreshTabCompleteLine("");
+    // }
+    // else {
       cmdOptions = completeQuery(allCommands, textarea.value);
       if ( tab == cmdOptions.length ) {
         tab = 0;
@@ -92,11 +92,11 @@ function enterKey(e) {
           }
           suggestionTxt += `<span class=\"inherit\">${cmdOptions[i]}</span>    `;
         }
-        refreshTabCompleteLine(suggestionTxt);
+        refreshTabCompleteLine(suggestionTxt, "no-animation", 0);
       }
       tab += 1;
     }
-  }
+  // }
 }
 
 
@@ -113,13 +113,13 @@ function commander(cmd) {
       loopLines(help, "color2 margin no-animation", 80);
       break;
     case "about":
-      loopLines(about, "color2 margin no-animation", 80);
+      loopLines(about, "color2 margin no-animation", 0);
       break;
     case "links":
-      loopLines(links, "color2 margin no-animation", 80);
+      loopLines(links, "color2 margin no-animation", 0);
       break;
     case "projects":
-      loopLines(projects, "color2 margin no-animation", 80);
+      loopLines(projects, "color2 margin no-animation", 0);
       break;
     case "email":
       addLine('Opening mailto:<a href="mailto:philipp.wulff@tum.de">philipp.wulff@tum.de</a>...', "color2", 80);
@@ -161,11 +161,13 @@ function commander(cmd) {
       }
       switch (themeCmd.toLowerCase()) {
         case "":
-          addLine(`<span class=\"inherit\">Usage: theme [arg]</span>`);
-          addLine(`<span class=\"inherit\">Args:</span>`);
-          addLine(`<span class=\"inherit\">   - ls: list all themes</span>`);
-          addLine(`<span class=\"inherit\">   - set: set a theme</span>`);
-          addLine(`<span class=\"inherit\">   - random: set a random theme</span>`);
+          addLine(`Usage: <span class=\"command\">theme</span> [arg]`, "inherit no-animation", 0);
+          addLine(`Args:`, "inherit no-animation", 0);
+          addLine(`   - <span class=\"command\">ls</span>: list all themes`, "inherit no-animation", 0);
+          addLine(`   - <span class=\"command\">set</span>: set a theme`, "inherit no-animation", 0);
+          addLine(`Example:`, "inherit no-animation", 0);
+          addLine(`   <span class=\"command\">theme random</span> to select a random theme.`, "inherit no-animation", 0);
+          addLine(`   <span class=\"command\">theme ls</span> to see all available themes.`, "inherit no-animation", 0);
           break;
         case "ls":
           loopLines(Object.keys(themes), "inherit", 80);
@@ -201,7 +203,12 @@ function commander(cmd) {
     case "ls":
       addLine("<span class=\"inherit\">some</span>", "color2", 80);
       addLine("<span class=\"inherit\">fake</span>", "color2", 80);
-      addLine("<span class=\"inherit\">files</span>", "color2", 80);
+      addLine("<span class=\"inherit\">folders</span>", "color2", 80);
+      if (args == "-a") {
+        addLine("<span class=\"inherit\">.and</span>", "color2", 80);
+        addLine("<span class=\"inherit\">.hidden</span>", "color2", 80);
+        addLine("<span class=\"inherit\">.files</span>", "color2", 80);
+      }
       break;
     case "cd":
       // check for file like path given in args
@@ -226,7 +233,7 @@ function commander(cmd) {
       addLine("", "color2", 0);
       break;
     default:
-      addLine(`Command not found: ${cmd}. Type <span class=\"command\">'help'</span> to see available commands.`, "inherit", 100);
+      addLine(`Command not found: ${cmd}. Type <span class=\"command\">'help'</span> to see available commands.`, "inherit no-animation", 0);
       break;
   }
 }
