@@ -4,7 +4,7 @@ I coded this website as a fun way to present my portfolio. Some cool features th
 - personal GitHub repos are found automatically and displayed when you type `projects`;
 - the terminal has tab-completion and displays auto-complete-suggestions similar to the beatiful shell [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh);
 - you can switch between terminal styles with a single command: `theme set ...`
-- Responsive design.
+- the webpage-design is responsive (it adjusts to the size of your device's screen)
 
 ## Disclaimer
 
