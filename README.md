@@ -9,4 +9,4 @@ I coded this website as a fun way to present my portfolio. Some cool features th
 ## Disclaimer
 
 You are welcome to reuse the code. I you do, all I ask is that you *link back to this original repository* :).
-I borrow some code from [Forrest Knight](https://www.youtube.com/watch?v=KtYby2QN0kQ) and [M4tt72](https://term.m4tt72.com).
+I draw inspiration and borrow some code from [Forrest Knight](https://www.youtube.com/watch?v=KtYby2QN0kQ), [M4tt72](https://term.m4tt72.com) and [Craig Feldman](https://github.com/craig-feldman/personal-website-react).
