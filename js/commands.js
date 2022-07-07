@@ -7,8 +7,8 @@ const empty = "&nbsp";
 about = [
   "<br>",
   "Hi there, 👋🏽",
-  `I am Philipp, a student and software engineer, who enjoys building robots, AI, 
-websites like this one and other cool projects that are useful to me or others.`,
+  `I am Philipp, a student and robotics engineer, who enjoys building robots, AI, 
+websites like this one and other cool projects that serve a purpose.`,
   `After graduating with a Bachelor's in Mechanical Engineering at RWTH Aachen I 
 began my Master's in Robotics, Cognition, Intelligence at the Technical University 
 of Munich. I am particularly interested in Deep Learning and have gained 
@@ -30,10 +30,11 @@ projects = [
   "Here is a list of some GitHub repositories that I worked on:",
   "<br>",
   `<div id="repo-box"></div>`,
-  ...repos,
+  repos,
 ];
 
 help = [
+  "<br>",
   'Use these commands to navigate my web-terminal:',
   // format as table to achieve responsive column layout
   `<table>
@@ -50,6 +51,7 @@ help = [
   </table>`,
   "<br>",
   'Also try other commands that you know. I may have included some easter eggs 😆.',
+  "<br>",
 ];
 
 banner = [
@@ -59,7 +61,7 @@ banner = [
   "██████╔╝███████║██║██║     ██║██████╔╝██████╔╝    ██║ █╗ ██║██║   ██║██║     █████╗  █████╗  ",
   "██╔═══╝ ██╔══██║██║██║     ██║██╔═══╝ ██╔═══╝     ██║███╗██║██║   ██║██║     ██╔══╝  ██╔══╝  ",
   "██║     ██║  ██║██║███████╗██║██║     ██║         ╚███╔███╔╝╚██████╔╝███████╗██║     ██║     ",
-  "╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝╚═╝     ╚═╝          ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝     ╚═╝     v1.0",   
+  "╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝╚═╝     ╚═╝          ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝     ╚═╝     ",   
   "<br>",
 ];
 
@@ -74,12 +76,13 @@ allCommands = [
   "echo", "ping", "ls", "cd", "vi", "vim", "emacs", "sudo", "gui",
 ];
 
-allArgs = [
-  "ls", "set", "random", ...themes,
-];
-
 themes = {
   "coral": "css/style_coral.css",
   "midnight": "css/style_midnight.css",
   "chocolate": "css/style_chocolate.css",
 };
+
+allArgs = [
+  "ls", "set", "random", ...themes,
+];
+

@@ -7,13 +7,12 @@ body {
   margin: 0;
   padding: 10px 15px;     /* top left */
   min-height: 99%;
-  width: 100%;
-  min-width: 550px;
+  width: min(1000px, 95vw);
   color: #F4D58D;
   background: #001427;
   font-family: cursor, monospace;
   overflow-x: hidden;
-  font-size: large;
+  font-size: min(20px, calc(1.5vw + 7px));
 }
 ::selection {
   color: #dcd1ee;
@@ -33,14 +32,15 @@ b {
 }
 /* Cursor Start */
 .cursor {
-  font-size: 12px;
+  font-size: 1.2vw; /*12px;*/
   color: #F34213;
   background-color: #F34213;
   position: relative;
   opacity: 1;
-  height: 1.5em;
-  width: 10px;
-  max-width: 10px;
+  height: min(22px, 2vw);
+  width: 1vw;
+  max-width: 7px;
+  /* min-height: 10px; */
   transform: translateY(4px);
   overflow: hidden;
   text-indent: -5px;
@@ -58,7 +58,8 @@ b {
   cursor: text;
   height: 50px;
   color: #F34213;
-  font-size: large;
+  font-size: min(20px, calc(1.5vw + 7px));
+  /* font-size: large; */
   margin-top: 15px;
 }
 #liner {
@@ -70,11 +71,12 @@ b {
 }
 #liner::before {
   color: #2191FB;
+  font-size: min(20px, calc(1.5vw + 7px));
   content: "guest@pw-term:$ ~";
 }
-#liner.password::before {
+/* #liner.password::before {
   content: "Password:";
-}
+} */
 @keyframes show {
   from {
     opacity: 0;
@@ -83,22 +85,48 @@ b {
     opacity: 1;
   }
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+tr td:first-child {
+  padding-left: 0px;
+}
+td {
+  padding: 0 5vw 1vh 0;
+}
+
 /* Cursor End */
 p {
   display: block;
   line-height: 1.3em;
   margin: 0;
   overflow: hidden;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   margin: 0;
   letter-spacing: 0.05em;
   animation: typing 0.5s steps(30, end);
+  /* font-size: calc(2vw + 7px); */
+  font-size: min(20px, calc(1.5vw + 7px));
+}
+.terminal-banner {
+  white-space: nowrap;
+  font-size: min(20px, calc(1vw));         /* 1.4vw */
+  font-weight: bolder;
+  /* Adds glow */
+  color: #F25F5C;
+  /* text-shadow: 0 0 10px #F25F5C;  */
+}
+.terminal-welcome-msg {
+  font-size: min(20px, calc(1.5vw + 7px));
 }
 .no-animation {
   animation: typing 0 steps(30, end);
 }
 .margin {
-  margin-left: 20px;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 @keyframes typing {
   from {

@@ -11,10 +11,11 @@ var pw = false;
 let pwd = false;
 var commandsLog = [];
 var selectedTabCmd = "";
+var current_theme = "coral";
 
 setTimeout(async function() {
-  await new Promise((resolve)=>{resolve(loopLines(banner, "terminal-banner", 80));});
-  // await loopLines(banner, "terminal-banner", 80);
+  //await new Promise((resolve)=>{resolve(loopLines(banner, "terminal-banner", 80));});
+  await loopLines(banner, "terminal-banner", 80);
   loopLines(welcomeMsg, "", 80);
   textarea.focus();
 }, 100);
@@ -181,8 +182,12 @@ function commander(cmd) {
           setThemeCSS(themeArg);
           break;
         case "random":
-          var theme = Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
+          var theme = current_theme;
+          while (theme == current_theme) {
+            theme = Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
+          }
           addLine(`<span class=\"inherit\">Setting theme: '${theme}'</span>`);
+          current_theme = theme;
           setThemeCSS(theme);
           break;
       }
@@ -244,7 +249,7 @@ function newTab(link) {
   }, 500);
 }
 
-function addLine(text, style, time) {
+async function addLine(text, style, time) {
   var t = "";
   for (let i = 0; i < text.length; i++) {
     if (text.charAt(i) == " " && text.charAt(i + 1) == " ") {
@@ -263,12 +268,17 @@ function addLine(text, style, time) {
 
     window.scrollTo(0, document.body.offsetHeight);
   }, time);
+  return true;
 }
 
 async function loopLines(name, style, time) {
-  name.forEach(function(item, index) {
-      addLine(item, style, index * time);
-  });
+  // name.forEach(function(item, index) {
+  //     addLine(item, style, index * time);
+  // });
+  for (var i = 0; i < name.length; i++) {
+    await addLine(name[i], style, i * time);
+  }
+  return true;
 }
 
 function setThemeCSS(theme) {
