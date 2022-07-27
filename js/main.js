@@ -13,9 +13,11 @@ var commandsLog = [];
 var selectedTabCmd = "";
 var current_theme = "coral";
 
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 setTimeout(async function() {
   //await new Promise((resolve)=>{resolve(loopLines(banner, "terminal-banner", 80));});
-  await loopLines(banner, "terminal-banner", 80);
+  await loopLines(banner, "terminal-banner", 20);
   loopLines(welcomeMsg, "", 80);
   textarea.focus();
 }, 100);
@@ -111,7 +113,7 @@ function commander(cmd) {
   switch (cmd.toLowerCase()) {
     // content stuff
     case "help":
-      loopLines(help, "color2 margin no-animation", 80);
+      loopLines(help, "color2 margin no-animation", 20);
       break;
     case "about":
       loopLines(about, "color2 margin no-animation", 0);
@@ -141,7 +143,7 @@ function commander(cmd) {
       break;
     case "history":
       addLine("<br>", "", 0);
-      loopLines(commandsLog, "color2", 80);
+      loopLines(commandsLog, "color2", 20);
       addLine("<br>", "command", 80 * commandsLog.length + 50);
       break;
     case "clear":
@@ -151,7 +153,7 @@ function commander(cmd) {
       }, 1);
       break;
     case "banner":
-      loopLines(banner, "terminal-banner", 80);
+      loopLines(banner, "terminal-banner", 20);
       break;
     case "theme":
       var allArgs = args.split(" ");
@@ -259,16 +261,17 @@ async function addLine(text, style, time) {
       t += text.charAt(i);
     }
   }
-  setTimeout(function() {
-    var next = document.createElement("p");
+  //setTimeout(function() {
+  await delay(time);
+  var next = document.createElement("p");
     next.innerHTML = t;
     next.className = style;
 
     before.parentNode.insertBefore(next, before);
 
     window.scrollTo(0, document.body.offsetHeight);
-  }, time);
-  return true;
+  //}, time);
+  return;
 }
 
 async function loopLines(name, style, time) {
@@ -278,7 +281,7 @@ async function loopLines(name, style, time) {
   for (var i = 0; i < name.length; i++) {
     await addLine(name[i], style, i * time);
   }
-  return true;
+  return;
 }
 
 function setThemeCSS(theme) {

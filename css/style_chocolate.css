@@ -37,7 +37,9 @@ b {
   background-color: #688E26;
   position: relative;
   opacity: 1;
-  height: min(22px, 2vw);
+  height: 2vw + 0.5px;
+  min-height: 10px;
+  max-height: 22px;
   width: 1vw;
   max-width: 7px;
   /* min-height: 10px; */

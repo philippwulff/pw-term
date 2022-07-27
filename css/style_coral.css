@@ -37,7 +37,9 @@ b {
   background-color: #FFD166;
   position: relative;
   opacity: 1;
-  height: min(22px, 2vw);
+  height: 2vw + 0.5px;
+  min-height: 10px;
+  max-height: 22px;
   width: 1vw;
   max-width: 7px;
   /* min-height: 10px; */
@@ -106,7 +108,7 @@ p {
   /* white-space: nowrap; */
   margin: 0;
   letter-spacing: 0.05em;
-  animation: typing 0.5s steps(30, end);
+  animation: typing 0.5s steps(30, end);    /* characters appearing from left to right */
   /* font-size: calc(2vw + 7px); */
   font-size: min(20px, calc(1.5vw + 7px));
 }
