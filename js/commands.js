@@ -67,7 +67,7 @@ banner = [
 
 welcomeMsg = [
   '<span class="color2 terminal-welcome-msg">Welcome to my personal website.</span>',
-  "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> to see a list of available commands.</span>",
+  "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> (and hit 'return') to see a list of available commands.</span>",
   "<br>",
 ];
 

@@ -114,7 +114,8 @@ p {
 }
 .terminal-banner {
   white-space: nowrap;
-  font-size: min(20px, calc(1vw));         /* 1.4vw */
+  /* font-size: min(20px, calc(1vw));         1.4vw */
+  font-size: clamp(5px, calc(1vw), 15px);
   font-weight: bolder;
   /* Adds glow */
   color: #F25F5C;
