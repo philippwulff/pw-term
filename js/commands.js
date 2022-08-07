@@ -20,7 +20,7 @@ links = [
   // format as table to achieve responsive column layout
   `<table>
    <tr><td>linkedin</td><td><a href="${linkedin}" target="_blank">linkedin/philippwulff</a></td></tr>
-   <tr><td>github</td><td><a href="${github}" target="_blank">linkedin/philippwulff</a></td></tr>
+   <tr><td>github</td><td><a href="${github}" target="_blank">github/philippwulff</a></td></tr>
    </table>`,
 ];
 
