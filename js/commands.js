@@ -45,7 +45,7 @@ help = [
   <tr><td><span class="command">help</span></td><td>You obviously already know what this does</td></tr>
   <tr><td><span class="command">email</span></td><td>Do not email me</td></tr>
   <tr><td><span class="command">clear</span></td><td>Clear terminal</td></tr>
-  <tr><td><span class="command">banner</span></td><td>Display the header</td></tr>
+  <tr><td><span class="command">banner</span></td><td>Display the banner</td></tr>
   <tr><td><span class="command">theme</span></td><td>Change the theme</td></tr>
   <tr><td><span class="command">[tab]</span></td><td>Trigger completion</td></tr>
   </table>`,
